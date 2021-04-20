@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?><testCases><name>Sics Data Comparision</name><startTimestamp>2021-04-19T11:49:22.140723900</startTimestamp>
+<testCase><name>Compare ACWorksheet</name><type>byColumnName</type>
+<rhsName>SOURCE</rhsName><rhsSQL>select wrk.*,act.order_id from AC_worksheet wrk JOIN  ACCOUNTING_ORDER act ON wrk.fk_acct_order= act.object_id order by wrk.identifier,act.order_id </rhsSQL>
+<lhsName>TARGET</lhsName><lhsSQL>select wrk.*,act.order_id from AC_worksheet wrk JOIN  ACCOUNTING_ORDER act ON wrk.fk_acct_order= act.object_id order by wrk.identifier,act.order_id </lhsSQL>
+<ignoreColumns>
+<name>OBJECT_ID</name>
+<name>STATUS_TIMESTAMP</name>
+<name>FK_STATUS_BY</name>
+<name>BOOKING_DATE</name>
+<name>REGIST_TIMESTAMP</name>
+<name>CLOSED_TIMESTAMP</name>
+<name>LAST_UPDATE_DT</name>
+<name>FK_ACCT_ORDER</name>
+<name>FK_REGISTERED_BY</name>
+<name>FK_LAST_UPD_BY</name>
+<name>IDENTIFIER</name>
+<name>FK_CLOSED_BY</name>
+</ignoreColumns>
+<success><timestamp>2021-04-19T11:54:38.166190800</timestamp><message>Checked 1,827 rows.</message></success></testCase>
+<testCase><name>Compare ACLedger Detail</name><type>byColumnName</type>
+<rhsName>SOURCE</rhsName><rhsSQL>select ac.identifier, ao.order_id, ald.* from  ACCOUNTING_ORDER ao JOIN AC_WORKSHEET ac ON ao.OBJECT_ID=ac.FK_ACCT_ORDER JOIN AC_LEDGER_BALANCE alb on alb.fk_worksheet=ac.OBJECT_ID  JOIN AC_LEDGER_DETAIL ald on alb.object_id=ald.fk_balance JOIN BUSINESS b on b.object_id=alb.fk_business order by b.identifier,ao.order_id,ac.identifier,ald.dtl_amt,ald.FUNC_AMT2,ald.EXCH_AMT</rhsSQL>
+<lhsName>TARGET</lhsName><lhsSQL>select ac.identifier, ao.order_id, ald.* from  ACCOUNTING_ORDER ao JOIN AC_WORKSHEET ac ON ao.OBJECT_ID=ac.FK_ACCT_ORDER JOIN AC_LEDGER_BALANCE alb on alb.fk_worksheet=ac.OBJECT_ID  JOIN AC_LEDGER_DETAIL ald on alb.object_id=ald.fk_balance JOIN BUSINESS b on b.object_id=alb.fk_business order by b.identifier,ao.order_id,ac.identifier,ald.dtl_amt,ald.FUNC_AMT2,ald.EXCH_AMT</lhsSQL>
+<ignoreColumns>
+<name>IS_LIQUID</name>
+<name>OBJECT_ID</name>
+<name>AC_START_DATE</name>
+<name>AC_END_DATE</name>
+<name>FK_SOC</name>
+<name>FK_INS_PER</name>
+<name>FK_ACCT_CLASS</name>
+<name>FK_WORKSHEET</name>
+<name>FK_BALANCE</name>
+<name>FK_AMENDMENT</name>
+<name>FK_ENTRY_CODE</name>
+<name>DTL_PLT_AMT</name>
+</ignoreColumns>
+<exceptionRows><rowNumber>6,395</rowNumber><columnNames>
+<column><columnName>IDENTIFIER</columnName><rhsValue>TW1169</rhsValue><lhsValue>TW1169</lhsValue></column>
+<column><columnName>ORDER_ID</columnName><rhsValue>AO349</rhsValue><lhsValue>AO349</lhsValue></column>
+<column><columnName>OBJECT_ID</columnName><rhsValue>77B873EAE63C11E3A7B4BD846C78CBAD</rhsValue><lhsValue>7A72B21CE63C11E3A7B4BD846C78CBAD</lhsValue></column>
+<column><columnName>DTL_AMT</columnName><rhsValue>-12000</rhsValue><lhsValue>-12000</lhsValue></column>
+<column><columnName>DTL_UNR_AMT</columnName><rhsValue>null</rhsValue><lhsValue>null</lhsValue></column>
+<column><columnName>DTL_PLT_AMT</columnName><rhsValue>null</rhsValue><lhsValue>null</lhsValue></column>
+<column><columnName>REPLACEMENT_VALUE</columnName><rhsValue>null</rhsValue><lhsValue>null</lhsValue></column>
+<column><columnName>TRANS_GEN_LDGR_DT</columnName><rhsValue>null</rhsValue><lhsValue>null</lhsValue></column>
+<column><columnName>EXCH_AMT</columnName><rhsValue>0</rhsValue><lhsValue>0</lhsValue></column>
+<column><columnName>FUNC_AMT2</columnName><rhsValue>0</rhsValue><lhsValue>0</lhsValue></column>
+<column><columnName>OCC_YR</columnName><rhsValue>2010</rhsValue><lhsValue>2012</lhsValue></column>
+<column><columnName>ORIG_UW_YEAR</columnName><rhsValue>2010</rhsValue><lhsValue>2012</lhsValue></column>
+<column><columnName>ORGNL_ACC_YEAR</columnName><rhsValue>null</rhsValue><lhsValue>null</lhsValue></column>
+<column><columnName>UW_YEAR</columnName><rhsValue>2010</rhsValue><lhsValue>2012</lhsValue></column>
+<column><columnName>WKST_SEQ_NBR</columnName><rhsValue>1</rhsValue><lhsValue>1</lhsValue></column>
+<column><columnName>IS_LIQUID</columnName><rhsValue>Y</rhsValue><lhsValue>N</lhsValue></column>
+<column><columnName>SHARE_CALC</columnName><rhsValue>Y</rhsValue><lhsValue>Y</lhsValue></column>
+<column><columnName>PRODUCER</columnName><rhsValue>null</rhsValue><lhsValue>null</lhsValue></column>
+<column><columnName>PRE_PROD</columnName><rhsValue>null</rhsValue><lhsValue>null</lhsValue></column>
+<column><columnName>BUS_CAT</columnName><rhsValue>null</rhsValue><lhsValue>null</lhsValue></column>
+<column><columnName>INSUR_CAT</columnName><rhsValue>null</rhsValue><lhsValue>null</lhsValue></column>
+<column><columnName>ORGNL_FGU_AMT</columnName><rhsValue>null</rhsValue><lhsValue>null</lhsValue></column>
+<column><columnName>NQS_NET_PERCENT</columnName><rhsValue>null</rhsValue><lhsValue>null</lhsValue></column>
+<column><columnName>AC_START_DATE</columnName><rhsValue>2010-12-01 00:00:00.0</rhsValue><lhsValue>2012-12-01 00:00:00.0</lhsValue></column>
+<column><columnName>AC_END_DATE</columnName><rhsValue>2010-12-31 00:00:00.0</rhsValue><lhsValue>2012-12-31 00:00:00.0</lhsValue></column>
+<column><columnName>IS_IN_S_CTRL_AMT</columnName><rhsValue>null</rhsValue><lhsValue>null</lhsValue></column>
+<column><columnName>DIS_PERCENT</columnName><rhsValue>null</rhsValue><lhsValue>null</lhsValue></column>
+<column><columnName>START_DATE</columnName><rhsValue>null</rhsValue><lhsValue>null</lhsValue></column>
+<column><columnName>END_DATE</columnName><rhsValue>null</rhsValue><lhsValue>null</lhsValue></column>
+<column><columnName>TAX_PERCENT</columnName><rhsValue>null</rhsValue><lhsValue>null</lhsValue></column>
+<column><columnName>IS_SPECIAL</columnName><rhsValue>N</rhsValue><lhsValue>N</lhsValue></column>
+<column><columnName>SPLIT_PER_AC</columnName><rhsValue>null</rhsValue><lhsValue>null</lhsValue></column>
+<column><columnName>IS_IN_CP_ORDER</columnName><rhsValue>N</rhsValue><lhsValue>N</lhsValue></column>
+<column><columnName>ORIG_BOOK_YEAR</columnName><rhsValue>null</rhsValue><lhsValue>null</lhsValue></column>
+<column><columnName>FK_EXCH_CURR</columnName><rhsValue>null</rhsValue><lhsValue>null</lhsValue></column>
+<column><columnName>FSK_SETLMNT_IND</columnName><rhsValue>1018</rhsValue><lhsValue>1018</lhsValue></column>
+<column><columnName>FSK_ORGNL_ACC_PRD</columnName><rhsValue>null</rhsValue><lhsValue>null</lhsValue></column>
+<column><columnName>FSK_SICSNT_SYSTEM</columnName><rhsValue>159</rhsValue><lhsValue>159</lhsValue></column>
+<column><columnName>FSK_REINS_CAT</columnName><rhsValue>null</rhsValue><lhsValue>null</lhsValue></column>
+<column><columnName>FSK_ACCESS_CODE</columnName><rhsValue>null</rhsValue><lhsValue>null</lhsValue></column>
+<column><columnName>FSK_TAX_TYPE</columnName><rhsValue>null</rhsValue><lhsValue>null</lhsValue></column>
+<column><columnName>FSK_ORIG_BOOK_PER</columnName><rhsValue>null</rhsValue><lhsValue>null</lhsValue></column>
+<column><columnName>SUBCLASS</columnName><rhsValue>1</rhsValue><lhsValue>1</lhsValue></column>
+<column><columnName>OCC_ID</columnName><rhsValue>null</rhsValue><lhsValue>null</lhsValue></column>
+<column><columnName>FRK_SETLMNT_IND</columnName><rhsValue>U</rhsValue><lhsValue>U</lhsValue></column>
+<column><columnName>FK_DTL_COMMENT</columnName><rhsValue>null</rhsValue><lhsValue>null</lhsValue></column>
+<column><columnName>FK_SOC</columnName><rhsValue>35D162A3E4A811E3AD1C1D086041892E</rhsValue><lhsValue>D484B81AE4C311E39119B3257FDFAAFC</lhsValue></column>
+<column><columnName>FK_INS_PER</columnName><rhsValue>33C27FB2E4A811E3AD1C1D086041892E</rhsValue><lhsValue>D415546FE4C311E39119B3257FDFAAFC</lhsValue></column>
+<column><columnName>FRK_ORGNL_ACC_PRD</columnName><rhsValue>null</rhsValue><lhsValue>null</lhsValue></column>
+<column><columnName>FK_ACCT_CLASS</columnName><rhsValue>36871D32E4A811E3AD1C1D086041892E</rhsValue><lhsValue>D5D1F8E4E4C311E39119B3257FDFAAFC</lhsValue></column>
+<column><columnName>FK_WORKSHEET</columnName><rhsValue>77AED6EEE63C11E3A7B4BD846C78CBAD</rhsValue><lhsValue>77AED6EEE63C11E3A7B4BD846C78CBAD</lhsValue></column>
+<column><columnName>FK_BALANCE</columnName><rhsValue>77B629EFE63C11E3A7B4BD846C78CBAD</rhsValue><lhsValue>7A7263F7E63C11E3A7B4BD846C78CBAD</lhsValue></column>
+<column><columnName>FK_ENTRY_CODE</columnName><rhsValue>66F3577BED26984591DA68B7517A719E</rhsValue><lhsValue>CAC5D5DA33616F47BBC23A298F7A46DC</lhsValue></column>
+<column><columnName>FK_AMENDMENT</columnName><rhsValue>34113BF4E4A811E3AD1C1D086041892E</rhsValue><lhsValue>D424E4D1E4C311E39119B3257FDFAAFC</lhsValue></column>
+<column><columnName>FRK_SICSNT_SYSTEM</columnName><rhsValue>P&C</rhsValue><lhsValue>P&C</lhsValue></column>
+<column><columnName>FK_CESSION</columnName><rhsValue>null</rhsValue><lhsValue>null</lhsValue></column>
+<column><columnName>FK_ORIG_CESSION</columnName><rhsValue>null</rhsValue><lhsValue>null</lhsValue></column>
+<column><columnName>FK_RPT_UNT</columnName><rhsValue>null</rhsValue><lhsValue>null</lhsValue></column>
+<column><columnName>FK_CLAIM_TO_SOC</columnName><rhsValue>null</rhsValue><lhsValue>null</lhsValue></column>
+<column><columnName>FK_INS_PER_ASSUMED</columnName><rhsValue>null</rhsValue><lhsValue>null</lhsValue></column>
+<column><columnName>FRK_REINS_CAT</columnName><rhsValue>null</rhsValue><lhsValue>null</lhsValue></column>
+<column><columnName>FK_HEADLINE_LOSS</columnName><rhsValue>null</rhsValue><lhsValue>null</lhsValue></column>
+<column><columnName>FK_PARENT_DET</columnName><rhsValue>null</rhsValue><lhsValue>null</lhsValue></column>
+<column><columnName>FRK_ACCESS_CODE</columnName><rhsValue>null</rhsValue><lhsValue>null</lhsValue></column>
+<column><columnName>FK_INS_PER_NQS</columnName><rhsValue>null</rhsValue><lhsValue>null</lhsValue></column>
+<column><columnName>FK_SRCE_INSTALMENT</columnName><rhsValue>null</rhsValue><lhsValue>null</lhsValue></column>
+<column><columnName>FK_TAX_COUNTRY</columnName><rhsValue>null</rhsValue><lhsValue>null</lhsValue></column>
+<column><columnName>FK_ORG_BS</columnName><rhsValue>null</rhsValue><lhsValue>null</lhsValue></column>
+<column><columnName>FK_UDEF_DATA</columnName><rhsValue>null</rhsValue><lhsValue>null</lhsValue></column>
+<column><columnName>FK_ORIG_RP</columnName><rhsValue>null</rhsValue><lhsValue>null</lhsValue></column>
+<column><columnName>FRK_TAX_TYPE</columnName><rhsValue>null</rhsValue><lhsValue>null</lhsValue></column>
+<column><columnName>FRK_ORIG_BOOK_PER</columnName><rhsValue>null</rhsValue><lhsValue>null</lhsValue></column>
+<column><columnName>FK_SRCE_IPT</columnName><rhsValue>null</rhsValue><lhsValue>null</lhsValue></column>
+<column><columnName>ACC_VLD_COMMENT</columnName><rhsValue>null</rhsValue><lhsValue>null</lhsValue></column>
+<column><columnName>FRK_ACC_VAL_CAT</columnName><rhsValue>null</rhsValue><lhsValue>null</lhsValue></column>
+<column><columnName>FSK_ACC_VAL_CAT</columnName><rhsValue>null</rhsValue><lhsValue>null</lhsValue></column>
+<column><columnName>FRK_CLM_ACC_CAT</columnName><rhsValue>null</rhsValue><lhsValue>null</lhsValue></column>
+<column><columnName>FSK_CLM_ACC_CAT</columnName><rhsValue>null</rhsValue><lhsValue>null</lhsValue></column>
+<column><columnName>IS_PC_CALC</columnName><rhsValue>null</rhsValue><lhsValue>null</lhsValue></column>
+<column><columnName>GOV_TAX_VLD_CMT</columnName><rhsValue>null</rhsValue><lhsValue>null</lhsValue></column>
+<column><columnName>FRK_GOV_TAX_VLD_CAT</columnName><rhsValue>null</rhsValue><lhsValue>null</lhsValue></column>
+<column><columnName>FSK_GOV_TAX_VLD_CAT</columnName><rhsValue>null</rhsValue><lhsValue>null</lhsValue></column>
+<column><columnName>GOV_TAX_RULE_REF</columnName><rhsValue>null</rhsValue><lhsValue>null</lhsValue></column></columnNames></exceptionRows>
+<failure><timestamp>2021-04-19T12:02:41.254990700</timestamp>
+<errorMessage>Unequal Column Values in [Row 6,395: OCC_YR] Expected 2010 but got 2012</errorMessage>
+<errorMessage>Unequal Column Values in [Row 6,395: ORIG_UW_YEAR] Expected 2010 but got 2012</errorMessage>
+<errorMessage>Unequal Column Values in [Row 6,395: UW_YEAR] Expected 2010 but got 2012</errorMessage></failure></testCase><testCase><name>Compare ACLedger Balance</name><type>byColumnName</type>
+<rhsName>SOURCE</rhsName><rhsSQL>select al.* from AC_LEDGER_BALANCE al JOIN AC_ledger_detail ad on al.object_id=ad.fk_balance JOIN AC_worksheet wrk ON ad.fk_worksheet=wrk.OBJECT_ID JOIN ACCOUNTING_ORDER act ON wrk.fk_acct_order= act.object_id order by al.identifier</rhsSQL>
+<lhsName>TARGET</lhsName><lhsSQL>select al.* from AC_LEDGER_BALANCE al JOIN AC_ledger_detail ad on al.object_id=ad.fk_balance JOIN AC_worksheet wrk ON ad.fk_worksheet=wrk.OBJECT_ID JOIN ACCOUNTING_ORDER act ON wrk.fk_acct_order= act.object_id order by al.identifier</lhsSQL>
+<ignoreColumns>
+<name>OBJECT_ID</name>
+<name>DUE_DATE</name>
+<name>DATE_OF_BOOKING</name>
+<name>FK_WORKSHEET</name>
+<name>DOB_TIME_STRING</name>
+<name>DUE_TIME_STRING</name>
+<name>FRK_AC_REF_PERIOD</name>
+<name>ACC_DOC_RECVD_DATE</name>
+</ignoreColumns>
+<success><timestamp>2021-04-19T12:16:27.410380500</timestamp><message>Checked 11,463 rows.</message></success></testCase>
+<endTimestamp>2021-04-19T12:16:27.410380500</endTimestamp>
+<failureCount>1</failureCount><successCount>2</successCount>
+</testCases>

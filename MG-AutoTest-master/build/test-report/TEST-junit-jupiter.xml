@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="JUnit Jupiter" tests="42" skipped="0" failures="1" errors="0" time="2,021.077" hostname="US-PF2CBSL8" timestamp="2021-04-19T12:16:27">
+<properties>
+<property name="file.encoding" value="Cp1252"/>
+<property name="file.separator" value="\"/>
+<property name="java.class.path" value="C:\Users\gmahesh20\Downloads\MG-AutoTest-master\MG-AutoTest-master\build\classes;C:\Users\gmahesh20\Downloads\MG-AutoTest-master\MG-AutoTest-master\lib\apiguardian-api-1.1.0.jar;C:\Users\gmahesh20\Downloads\MG-AutoTest-master\MG-AutoTest-master\lib\hamcrest-core-1.3.jar;C:\Users\gmahesh20\Downloads\MG-AutoTest-master\MG-AutoTest-master\lib\junit-4.12.jar;C:\Users\gmahesh20\Downloads\MG-AutoTest-master\MG-AutoTest-master\lib\junit-jupiter-api-5.5.2.jar;C:\Users\gmahesh20\Downloads\MG-AutoTest-master\MG-AutoTest-master\lib\junit-jupiter-engine-5.5.2.jar;C:\Users\gmahesh20\Downloads\MG-AutoTest-master\MG-AutoTest-master\lib\junit-jupiter-migration-support-5.0.0-M3.jar;C:\Users\gmahesh20\Downloads\MG-AutoTest-master\MG-AutoTest-master\lib\junit-platform-commons-1.5.2.jar;C:\Users\gmahesh20\Downloads\MG-AutoTest-master\MG-AutoTest-master\lib\junit-platform-engine-1.5.2.jar;C:\Users\gmahesh20\Downloads\MG-AutoTest-master\MG-AutoTest-master\lib\junit-platform-launcher-1.5.2.jar;C:\Users\gmahesh20\Downloads\MG-AutoTest-master\MG-AutoTest-master\lib\junit-vintage-engine-5.5.2.jar;C:\Users\gmahesh20\Downloads\MG-AutoTest-master\MG-AutoTest-master\lib\opentest4j-1.1.1.jar;C:\Users\gmahesh20\Downloads\MG-AutoTest-master\MG-AutoTest-master\lib\jackson-annotations-2.10.2.jar;C:\Users\gmahesh20\Downloads\MG-AutoTest-master\MG-AutoTest-master\lib\jackson-core-2.10.2.jar;C:\Users\gmahesh20\Downloads\MG-AutoTest-master\MG-AutoTest-master\lib\jackson-databind-2.10.2.jar;C:\Users\gmahesh20\Downloads\MG-AutoTest-master\MG-AutoTest-master\lib\log4j-1.2.16.jar;C:\Users\gmahesh20\Downloads\MG-AutoTest-master\MG-AutoTest-master\lib\junit-platform-console-standalone-1.5.2.jar;C:\Users\gmahesh20\Downloads\MG-AutoTest-master\MG-AutoTest-master\lib\codemodel-2.2-javadoc.jar;C:\Users\gmahesh20\Downloads\MG-AutoTest-master\MG-AutoTest-master\lib\codemodel-2.2-sources.jar;C:\Users\gmahesh20\Downloads\MG-AutoTest-master\MG-AutoTest-master\lib\codemodel-2.2.jar;C:\Users\gmahesh20\Downloads\MG-AutoTest-master\MG-AutoTest-master\lib\csvjdbc.jar;C:\Users\gmahesh20\Downloads\MG-AutoTest-master\MG-AutoTest-master\lib\db2jcc_license_cu.jar;C:\Users\gmahesh20\Downloads\MG-AutoTest-master\MG-AutoTest-master\lib\db2jcc4.jar;C:\Users\gmahesh20\Downloads\MG-AutoTest-master\MG-AutoTest-master\lib\jtds-1.2.8.jar;C:\Users\gmahesh20\Downloads\MG-AutoTest-master\MG-AutoTest-master\lib\junit-4.8.2.jar;C:\Users\gmahesh20\Downloads\MG-AutoTest-master\MG-AutoTest-master\lib\JUnitParams-0.3.6.jar;C:\Users\gmahesh20\Downloads\MG-AutoTest-master\MG-AutoTest-master\lib\mssql-jdbc-7.0.0.jre8.jar;C:\Users\gmahesh20\Downloads\MG-AutoTest-master\MG-AutoTest-master\lib\ojdbc6-11.1.0.jar;C:\Users\gmahesh20\Downloads\MG-AutoTest-master\MG-AutoTest-master\lib\ojdbc8-12.2.0.1.0.jar;C:\Users\gmahesh20\Downloads\MG-AutoTest-master\MG-AutoTest-master\lib\poi-excelant-3.10-FINAL-20140208.jar;C:\Users\gmahesh20\Downloads\MG-AutoTest-master\MG-AutoTest-master\lib\poi-ooxml-3.10-FINAL-20140208.jar;C:\Users\gmahesh20\Downloads\MG-AutoTest-master\MG-AutoTest-master\lib\poi-ooxml-schemas-3.10-FINAL-20140208.jar;C:\Users\gmahesh20\Downloads\MG-AutoTest-master\MG-AutoTest-master\lib\poi-scratchpad-3.10-FINAL-20140208.jar;C:\Users\gmahesh20\Downloads\MG-AutoTest-master\MG-AutoTest-master\lib\sqljdbc4.jar;C:\Users\gmahesh20\Downloads\MG-AutoTest-master\MG-AutoTest-master\lib\slf4j-api-1.6.6.jar;C:\Users\gmahesh20\Downloads\MG-AutoTest-master\MG-AutoTest-master\lib\commons-dbutils-1.7.jar;C:\Users\gmahesh20\Downloads\MG-AutoTest-master\MG-AutoTest-master\lib\HikariCP-3.2.0.jar;C:\Users\gmahesh20\Downloads\MG-AutoTest-master\MG-AutoTest-master\lib\slf4j-log4j12-1.6.6.jar;C:\Users\gmahesh20\Downloads\MG-AutoTest-master\MG-AutoTest-master\lib\yank-3.3.3.jar;C:\Users\gmahesh20\Downloads\MG-AutoTest-master\MG-AutoTest-master\lib\org.jacoco.ant-0.8.6.jar"/>
+<property name="java.class.version" value="59.0"/>
+<property name="java.home" value="C:\Users\gmahesh20\Downloads\eclipse-jee-2021-03-R-win32-x86_64\eclipse\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_15.0.2.v20210201-0955\jre"/>
+<property name="java.io.tmpdir" value="C:\Users\GMAHES~1\AppData\Local\Temp\"/>
+<property name="java.library.path" value="C:\Users\gmahesh20\Downloads\eclipse-jee-2021-03-R-win32-x86_64\eclipse\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_15.0.2.v20210201-0955\jre\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:/Users/gmahesh20/Downloads/eclipse-jee-2021-03-R-win32-x86_64/eclipse//plugins/org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_15.0.2.v20210201-0955/jre/bin/server;C:/Users/gmahesh20/Downloads/eclipse-jee-2021-03-R-win32-x86_64/eclipse//plugins/org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_15.0.2.v20210201-0955/jre/bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Oracle\Win64\product\11.2.0\client_2\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\Symantec\VIP Access Client\;C:\Program Files\Git\cmd;C:\Program Files (x86)\Pulse Secure\VC142.CRT\X64\;C:\Program Files (x86)\Pulse Secure\VC142.CRT\X86\;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Soft\apache-maven-3.6.3\bin;C:\Program Files\Java\jdk-11.0.10\bin;C:\Users\gmahesh20\Downloads\apache-ant-1.9.15-bin\apache-ant-1.9.15\bin;C:\Users\gmahesh20\AppData\Local\Microsoft\WindowsApps;C:\Users\gmahesh20\Downloads\eclipse-jee-2021-03-R-win32-x86_64\eclipse;;."/>
+<property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+<property name="java.runtime.version" value="15.0.2+7-27"/>
+<property name="java.specification.name" value="Java Platform API Specification"/>
+<property name="java.specification.vendor" value="Oracle Corporation"/>
+<property name="java.specification.version" value="15"/>
+<property name="java.vendor" value="Oracle Corporation"/>
+<property name="java.vendor.url" value="https://java.oracle.com/"/>
+<property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+<property name="java.version" value="15.0.2"/>
+<property name="java.version.date" value="2021-01-19"/>
+<property name="java.vm.compressedOopsMode" value="Zero based"/>
+<property name="java.vm.info" value="mixed mode"/>
+<property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+<property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+<property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+<property name="java.vm.specification.version" value="15"/>
+<property name="java.vm.vendor" value="Oracle Corporation"/>
+<property name="java.vm.version" value="15.0.2+7-27"/>
+<property name="jdk.debug" value="release"/>
+<property name="line.separator" value="
+"/>
+<property name="os.arch" value="amd64"/>
+<property name="os.name" value="Windows 10"/>
+<property name="os.version" value="10.0"/>
+<property name="path.separator" value=";"/>
+<property name="sun.arch.data.model" value="64"/>
+<property name="sun.boot.library.path" value="C:\Users\gmahesh20\Downloads\eclipse-jee-2021-03-R-win32-x86_64\eclipse\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_15.0.2.v20210201-0955\jre\bin"/>
+<property name="sun.cpu.endian" value="little"/>
+<property name="sun.cpu.isalist" value="amd64"/>
+<property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+<property name="sun.java.command" value="org.junit.platform.console.ConsoleLauncher --scan-classpath --reports-dir build/test-report"/>
+<property name="sun.java.launcher" value="SUN_STANDARD"/>
+<property name="sun.jnu.encoding" value="Cp1252"/>
+<property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+<property name="sun.os.patch.level" value=""/>
+<property name="user.country" value="US"/>
+<property name="user.dir" value="C:\Users\gmahesh20\Downloads\MG-AutoTest-master\MG-AutoTest-master"/>
+<property name="user.home" value="C:\Users\gmahesh20"/>
+<property name="user.language" value="en"/>
+<property name="user.name" value="gmahesh20"/>
+<property name="user.script" value=""/>
+<property name="user.timezone" value="Asia/Calcutta"/>
+<property name="user.variant" value=""/>
+</properties>
+<testcase name="Batch Job Test: MG_Accounting_Order_1_:_Checking_Occurrence_Year_Re_Allocation_of_Acctuals" classname="com.csc.sics.mg.batch.test.BatchJobTestFactoryTest" time="2.561">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.csc.sics.mg.batch.test.BatchJobTestFactoryTest]/[test-factory:generateDynamicTests()]/[dynamic-test:#1]
+display-name: Batch Job Test: MG_Accounting_Order_1_:_Checking_Occurrence_Year_Re_Allocation_of_Acctuals
+]]></system-out>
+</testcase>
+<testcase name="Step 1: Accounting Order Job Step Test: Main Section - Occ Year Alloc" classname="com.csc.sics.mg.batch.test.BatchJobTestFactoryTest" time="2.281">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.csc.sics.mg.batch.test.BatchJobTestFactoryTest]/[test-factory:generateDynamicTests()]/[dynamic-test:#2]
+display-name: Step 1: Accounting Order Job Step Test: Main Section - Occ Year Alloc
+]]></system-out>
+</testcase>
+<testcase name="Step 2: Accounting Order Job Step Test: Main Section - One AC - Accum AC = On" classname="com.csc.sics.mg.batch.test.BatchJobTestFactoryTest" time="4.937">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.csc.sics.mg.batch.test.BatchJobTestFactoryTest]/[test-factory:generateDynamicTests()]/[dynamic-test:#3]
+display-name: Step 2: Accounting Order Job Step Test: Main Section - One AC - Accum AC = On
+]]></system-out>
+</testcase>
+<testcase name="Step 3: Accounting Order Job Step Test: Main Section - 1 AC - Occ Yr Realloc" classname="com.csc.sics.mg.batch.test.BatchJobTestFactoryTest" time="4.559">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.csc.sics.mg.batch.test.BatchJobTestFactoryTest]/[test-factory:generateDynamicTests()]/[dynamic-test:#4]
+display-name: Step 3: Accounting Order Job Step Test: Main Section - 1 AC - Occ Yr Realloc
+]]></system-out>
+</testcase>
+<testcase name="Step 4: Accounting Order Job Step Test: Main Section - 1 AC - Occ Yr Realloc" classname="com.csc.sics.mg.batch.test.BatchJobTestFactoryTest" time="3.01">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.csc.sics.mg.batch.test.BatchJobTestFactoryTest]/[test-factory:generateDynamicTests()]/[dynamic-test:#5]
+display-name: Step 4: Accounting Order Job Step Test: Main Section - 1 AC - Occ Yr Realloc
+]]></system-out>
+</testcase>
+<testcase name="Step 5: Accounting Order Job Step Test: Main Section - 2 ACs - AC split" classname="com.csc.sics.mg.batch.test.BatchJobTestFactoryTest" time="2.581">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.csc.sics.mg.batch.test.BatchJobTestFactoryTest]/[test-factory:generateDynamicTests()]/[dynamic-test:#6]
+display-name: Step 5: Accounting Order Job Step Test: Main Section - 2 ACs - AC split
+]]></system-out>
+</testcase>
+<testcase name="Step 6: Accounting Order Job Step Test: Main Section - 2 ACs - Accum. AC spli t" classname="com.csc.sics.mg.batch.test.BatchJobTestFactoryTest" time="2.312">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.csc.sics.mg.batch.test.BatchJobTestFactoryTest]/[test-factory:generateDynamicTests()]/[dynamic-test:#7]
+display-name: Step 6: Accounting Order Job Step Test: Main Section - 2 ACs - Accum. AC spli t
+]]></system-out>
+</testcase>
+<testcase name="Step 7: Accounting Order Job Step Test: Main Section - 2 ACs - AC split - Occ Yr" classname="com.csc.sics.mg.batch.test.BatchJobTestFactoryTest" time="3.084">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.csc.sics.mg.batch.test.BatchJobTestFactoryTest]/[test-factory:generateDynamicTests()]/[dynamic-test:#8]
+display-name: Step 7: Accounting Order Job Step Test: Main Section - 2 ACs - AC split - Occ Yr
+]]></system-out>
+</testcase>
+<testcase name="Step 8: Accounting Order Job Step Test: Main Sect - 2 ACs - Acc AC spl - Occ Yr" classname="com.csc.sics.mg.batch.test.BatchJobTestFactoryTest" time="3.223">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.csc.sics.mg.batch.test.BatchJobTestFactoryTest]/[test-factory:generateDynamicTests()]/[dynamic-test:#9]
+display-name: Step 8: Accounting Order Job Step Test: Main Sect - 2 ACs - Acc AC spl - Occ Yr
+]]></system-out>
+</testcase>
+<testcase name="Step 9: Accounting Order Job Step Test: Child sections with 1 AC " classname="com.csc.sics.mg.batch.test.BatchJobTestFactoryTest" time="2.933">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.csc.sics.mg.batch.test.BatchJobTestFactoryTest]/[test-factory:generateDynamicTests()]/[dynamic-test:#10]
+display-name: Step 9: Accounting Order Job Step Test: Child sections with 1 AC 
+]]></system-out>
+</testcase>
+<testcase name="Step 10: Accounting Order Job Step Test: Child sections with 1 AC - Occ Yr" classname="com.csc.sics.mg.batch.test.BatchJobTestFactoryTest" time="3.046">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.csc.sics.mg.batch.test.BatchJobTestFactoryTest]/[test-factory:generateDynamicTests()]/[dynamic-test:#11]
+display-name: Step 10: Accounting Order Job Step Test: Child sections with 1 AC - Occ Yr
+]]></system-out>
+</testcase>
+<testcase name="Step 11: Accounting Order Job Step Test: AC split &amp; Occ Yr reallo, acruals booked" classname="com.csc.sics.mg.batch.test.BatchJobTestFactoryTest" time="4.722">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.csc.sics.mg.batch.test.BatchJobTestFactoryTest]/[test-factory:generateDynamicTests()]/[dynamic-test:#12]
+display-name: Step 11: Accounting Order Job Step Test: AC split & Occ Yr reallo, acruals booked
+]]></system-out>
+</testcase>
+<testcase name="Step 12: Accounting Order Job Step Test: AC split &amp; Occ Yr reallo, acruals booked" classname="com.csc.sics.mg.batch.test.BatchJobTestFactoryTest" time="2.199">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.csc.sics.mg.batch.test.BatchJobTestFactoryTest]/[test-factory:generateDynamicTests()]/[dynamic-test:#13]
+display-name: Step 12: Accounting Order Job Step Test: AC split & Occ Yr reallo, acruals booked
+]]></system-out>
+</testcase>
+<testcase name="Step 13: Accounting Order Job Step Test: AC split &amp; Occ Yr reallo, acruals booked" classname="com.csc.sics.mg.batch.test.BatchJobTestFactoryTest" time="3.055">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.csc.sics.mg.batch.test.BatchJobTestFactoryTest]/[test-factory:generateDynamicTests()]/[dynamic-test:#14]
+display-name: Step 13: Accounting Order Job Step Test: AC split & Occ Yr reallo, acruals booked
+]]></system-out>
+</testcase>
+<testcase name="Step 14: Accounting Order Job Step Test: AC split &amp; Occ Yr reallo, acruals booked" classname="com.csc.sics.mg.batch.test.BatchJobTestFactoryTest" time="2.696">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.csc.sics.mg.batch.test.BatchJobTestFactoryTest]/[test-factory:generateDynamicTests()]/[dynamic-test:#15]
+display-name: Step 14: Accounting Order Job Step Test: AC split & Occ Yr reallo, acruals booked
+]]></system-out>
+</testcase>
+<testcase name="Step 15: Accounting Order Job Step Test: AC split &amp; Occ Yr reallo, acruals booked" classname="com.csc.sics.mg.batch.test.BatchJobTestFactoryTest" time="2.33">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.csc.sics.mg.batch.test.BatchJobTestFactoryTest]/[test-factory:generateDynamicTests()]/[dynamic-test:#16]
+display-name: Step 15: Accounting Order Job Step Test: AC split & Occ Yr reallo, acruals booked
+]]></system-out>
+</testcase>
+<testcase name="Step 16: Accounting Order Job Step Test: AC split &amp; Occ Yr reallo, acruals booked" classname="com.csc.sics.mg.batch.test.BatchJobTestFactoryTest" time="2.613">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.csc.sics.mg.batch.test.BatchJobTestFactoryTest]/[test-factory:generateDynamicTests()]/[dynamic-test:#17]
+display-name: Step 16: Accounting Order Job Step Test: AC split & Occ Yr reallo, acruals booked
+]]></system-out>
+</testcase>
+<testcase name="Step 17: Accounting Order Job Step Test: AC split &amp; Occ Yr reallo, acruals booked" classname="com.csc.sics.mg.batch.test.BatchJobTestFactoryTest" time="2.665">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.csc.sics.mg.batch.test.BatchJobTestFactoryTest]/[test-factory:generateDynamicTests()]/[dynamic-test:#18]
+display-name: Step 17: Accounting Order Job Step Test: AC split & Occ Yr reallo, acruals booked
+]]></system-out>
+</testcase>
+<testcase name="Step 18: Accounting Order Job Step Test: AC split &amp; Occ Yr reallo, acruals booked" classname="com.csc.sics.mg.batch.test.BatchJobTestFactoryTest" time="3.15">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.csc.sics.mg.batch.test.BatchJobTestFactoryTest]/[test-factory:generateDynamicTests()]/[dynamic-test:#19]
+display-name: Step 18: Accounting Order Job Step Test: AC split & Occ Yr reallo, acruals booked
+]]></system-out>
+</testcase>
+<testcase name="Step 19: Accounting Order Job Step Test: AC split &amp; Occ Yr reallo, acruals booked" classname="com.csc.sics.mg.batch.test.BatchJobTestFactoryTest" time="7.461">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.csc.sics.mg.batch.test.BatchJobTestFactoryTest]/[test-factory:generateDynamicTests()]/[dynamic-test:#20]
+display-name: Step 19: Accounting Order Job Step Test: AC split & Occ Yr reallo, acruals booked
+]]></system-out>
+</testcase>
+<testcase name="Step 20: Accounting Order Job Step Test: AC split &amp; Occ Yr reallo, acruals booked" classname="com.csc.sics.mg.batch.test.BatchJobTestFactoryTest" time="4.182">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.csc.sics.mg.batch.test.BatchJobTestFactoryTest]/[test-factory:generateDynamicTests()]/[dynamic-test:#21]
+display-name: Step 20: Accounting Order Job Step Test: AC split & Occ Yr reallo, acruals booked
+]]></system-out>
+</testcase>
+<testcase name="Step 21: Accounting Order Job Step Test: AC split &amp; Occ Yr reallo, acruals booked" classname="com.csc.sics.mg.batch.test.BatchJobTestFactoryTest" time="2.513">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.csc.sics.mg.batch.test.BatchJobTestFactoryTest]/[test-factory:generateDynamicTests()]/[dynamic-test:#22]
+display-name: Step 21: Accounting Order Job Step Test: AC split & Occ Yr reallo, acruals booked
+]]></system-out>
+</testcase>
+<testcase name="Step 22: Accounting Order Job Step Test: AC split &amp; Occ Yr reallo, acruals booked" classname="com.csc.sics.mg.batch.test.BatchJobTestFactoryTest" time="2.986">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.csc.sics.mg.batch.test.BatchJobTestFactoryTest]/[test-factory:generateDynamicTests()]/[dynamic-test:#23]
+display-name: Step 22: Accounting Order Job Step Test: AC split & Occ Yr reallo, acruals booked
+]]></system-out>
+</testcase>
+<testcase name="Batch Job Test: Accrual_on_Inward_Order" classname="com.csc.sics.mg.batch.test.BatchJobTestFactoryTest" time="3.594">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.csc.sics.mg.batch.test.BatchJobTestFactoryTest]/[test-factory:generateDynamicTests()]/[dynamic-test:#24]
+display-name: Batch Job Test: Accrual_on_Inward_Order
+]]></system-out>
+</testcase>
+<testcase name="Step 1: Accounting Order Job Step Test: EPI only - AC Split" classname="com.csc.sics.mg.batch.test.BatchJobTestFactoryTest" time="2.616">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.csc.sics.mg.batch.test.BatchJobTestFactoryTest]/[test-factory:generateDynamicTests()]/[dynamic-test:#25]
+display-name: Step 1: Accounting Order Job Step Test: EPI only - AC Split
+]]></system-out>
+</testcase>
+<testcase name="Step 2: Accounting Order Job Step Test: EPI &amp; All Other Costs" classname="com.csc.sics.mg.batch.test.BatchJobTestFactoryTest" time="2.286">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.csc.sics.mg.batch.test.BatchJobTestFactoryTest]/[test-factory:generateDynamicTests()]/[dynamic-test:#26]
+display-name: Step 2: Accounting Order Job Step Test: EPI & All Other Costs
+]]></system-out>
+</testcase>
+<testcase name="Step 3: Accounting Order Job Step Test: EPI &amp; all costs - No Claim Bonus" classname="com.csc.sics.mg.batch.test.BatchJobTestFactoryTest" time="3.07">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.csc.sics.mg.batch.test.BatchJobTestFactoryTest]/[test-factory:generateDynamicTests()]/[dynamic-test:#27]
+display-name: Step 3: Accounting Order Job Step Test: EPI & all costs - No Claim Bonus
+]]></system-out>
+</testcase>
+<testcase name="Step 4: Accounting Order Job Step Test: All Costs only" classname="com.csc.sics.mg.batch.test.BatchJobTestFactoryTest" time="3.049">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.csc.sics.mg.batch.test.BatchJobTestFactoryTest]/[test-factory:generateDynamicTests()]/[dynamic-test:#28]
+display-name: Step 4: Accounting Order Job Step Test: All Costs only
+]]></system-out>
+</testcase>
+<testcase name="Step 5: Accounting Order Job Step Test:  EPI &amp; All Costs - Time elapsed method" classname="com.csc.sics.mg.batch.test.BatchJobTestFactoryTest" time="2.894">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.csc.sics.mg.batch.test.BatchJobTestFactoryTest]/[test-factory:generateDynamicTests()]/[dynamic-test:#29]
+display-name: Step 5: Accounting Order Job Step Test:  EPI & All Costs - Time elapsed method
+]]></system-out>
+</testcase>
+<testcase name="Step 6: Accounting Order Job Step Test: Actuals booked - Block neg. accr = off" classname="com.csc.sics.mg.batch.test.BatchJobTestFactoryTest" time="3.281">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.csc.sics.mg.batch.test.BatchJobTestFactoryTest]/[test-factory:generateDynamicTests()]/[dynamic-test:#30]
+display-name: Step 6: Accounting Order Job Step Test: Actuals booked - Block neg. accr = off
+]]></system-out>
+</testcase>
+<testcase name="Step 7: Accounting Order Job Step Test: Actuals booked - Block neg Accru" classname="com.csc.sics.mg.batch.test.BatchJobTestFactoryTest" time="3.07">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.csc.sics.mg.batch.test.BatchJobTestFactoryTest]/[test-factory:generateDynamicTests()]/[dynamic-test:#31]
+display-name: Step 7: Accounting Order Job Step Test: Actuals booked - Block neg Accru
+]]></system-out>
+</testcase>
+<testcase name="Batch Job Test: MG_Retrocession_Order_1_:_Check_Accounting_Classification_split" classname="com.csc.sics.mg.batch.test.BatchJobTestFactoryTest" time="2.617">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.csc.sics.mg.batch.test.BatchJobTestFactoryTest]/[test-factory:generateDynamicTests()]/[dynamic-test:#32]
+display-name: Batch Job Test: MG_Retrocession_Order_1_:_Check_Accounting_Classification_split
+]]></system-out>
+</testcase>
+<testcase name="Step 1: Accounting Order Job Step Test: Multiple sections - AC split " classname="com.csc.sics.mg.batch.test.BatchJobTestFactoryTest" time="2.565">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.csc.sics.mg.batch.test.BatchJobTestFactoryTest]/[test-factory:generateDynamicTests()]/[dynamic-test:#33]
+display-name: Step 1: Accounting Order Job Step Test: Multiple sections - AC split 
+]]></system-out>
+</testcase>
+<testcase name="Step 2: Accounting Order Job Step Test: Multiple sections - AC split " classname="com.csc.sics.mg.batch.test.BatchJobTestFactoryTest" time="2.981">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.csc.sics.mg.batch.test.BatchJobTestFactoryTest]/[test-factory:generateDynamicTests()]/[dynamic-test:#34]
+display-name: Step 2: Accounting Order Job Step Test: Multiple sections - AC split 
+]]></system-out>
+</testcase>
+<testcase name="Step 3: Accounting Order Job Step Test: Multiple sections - AC split " classname="com.csc.sics.mg.batch.test.BatchJobTestFactoryTest" time="2.079">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.csc.sics.mg.batch.test.BatchJobTestFactoryTest]/[test-factory:generateDynamicTests()]/[dynamic-test:#35]
+display-name: Step 3: Accounting Order Job Step Test: Multiple sections - AC split 
+]]></system-out>
+</testcase>
+<testcase name="Batch Job Test: MG_Accounting_Order_2_:_Checking_Accounting_Classificaiton_split" classname="com.csc.sics.mg.batch.test.BatchJobTestFactoryTest" time="5.452">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.csc.sics.mg.batch.test.BatchJobTestFactoryTest]/[test-factory:generateDynamicTests()]/[dynamic-test:#36]
+display-name: Batch Job Test: MG_Accounting_Order_2_:_Checking_Accounting_Classificaiton_split
+]]></system-out>
+</testcase>
+<testcase name="Step 1: Accounting Order Job Step Test: Multiple sections - AC split " classname="com.csc.sics.mg.batch.test.BatchJobTestFactoryTest" time="3.103">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.csc.sics.mg.batch.test.BatchJobTestFactoryTest]/[test-factory:generateDynamicTests()]/[dynamic-test:#37]
+display-name: Step 1: Accounting Order Job Step Test: Multiple sections - AC split 
+]]></system-out>
+</testcase>
+<testcase name="Step 2: Accounting Order Job Step Test: Multiple sections - AC split " classname="com.csc.sics.mg.batch.test.BatchJobTestFactoryTest" time="2.62">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.csc.sics.mg.batch.test.BatchJobTestFactoryTest]/[test-factory:generateDynamicTests()]/[dynamic-test:#38]
+display-name: Step 2: Accounting Order Job Step Test: Multiple sections - AC split 
+]]></system-out>
+</testcase>
+<testcase name="Step 3: Accounting Order Job Step Test: Multiple sections - AC split " classname="com.csc.sics.mg.batch.test.BatchJobTestFactoryTest" time="2.519">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.csc.sics.mg.batch.test.BatchJobTestFactoryTest]/[test-factory:generateDynamicTests()]/[dynamic-test:#39]
+display-name: Step 3: Accounting Order Job Step Test: Multiple sections - AC split 
+]]></system-out>
+</testcase>
+<testcase name="CompareACWorksheet" classname="com.csc.sics.mg.autotests.SicsDataComparisonTest" time="286.213">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.csc.sics.mg.autotests.SicsDataComparisonTest]/[test-factory:dynamicTestCollection()]/[dynamic-test:#1]
+display-name: CompareACWorksheet
+]]></system-out>
+</testcase>
+<testcase name="CompareACLedgerDetail" classname="com.csc.sics.mg.autotests.SicsDataComparisonTest" time="483.092">
+<failure message="Unequal Column Values in [Row 6,395: OCC_YR] Expected 2010 but got 2012
+Unequal Column Values in [Row 6,395: ORIG_UW_YEAR] Expected 2010 but got 2012
+Unequal Column Values in [Row 6,395: UW_YEAR] Expected 2010 but got 2012" type="junit.framework.AssertionFailedError"><![CDATA[junit.framework.AssertionFailedError: Unequal Column Values in [Row 6,395: OCC_YR] Expected 2010 but got 2012
+Unequal Column Values in [Row 6,395: ORIG_UW_YEAR] Expected 2010 but got 2012
+Unequal Column Values in [Row 6,395: UW_YEAR] Expected 2010 but got 2012
+	at com.csc.sics.mg.sqlunit.AssertSql.fail(Unknown Source)
+	at com.csc.sics.mg.sqlunit.AssertSql.fail(Unknown Source)
+	at com.csc.sics.mg.sqlunit.AssertSql.equals(Unknown Source)
+	at com.csc.sics.mg.sqlunit.AssertSql.equalsByColumnName(Unknown Source)
+	at com.csc.sics.mg.autotests.SicsDataComparisonTest.lambda$dynamicTestCollection$0(Unknown Source)
+	at org.junit.jupiter.engine.descriptor.DynamicTestTestDescriptor.lambda$execute$0(DynamicTestTestDescriptor.java:52)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:125)
+	at org.junit.jupiter.api.extension.InvocationInterceptor.interceptDynamicTest(InvocationInterceptor.java:158)
+	at org.junit.jupiter.engine.descriptor.DynamicTestTestDescriptor.lambda$execute$1(DynamicTestTestDescriptor.java:58)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptorCall.lambda$ofVoid$0(InvocationInterceptorChain.java:76)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:104)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:62)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:43)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:35)
+	at org.junit.jupiter.engine.descriptor.DynamicTestTestDescriptor.execute(DynamicTestTestDescriptor.java:57)
+	at org.junit.jupiter.engine.descriptor.DynamicTestTestDescriptor.execute(DynamicTestTestDescriptor.java:31)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:135)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:32)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask$DefaultDynamicTestExecutor.execute(NodeTestTask.java:198)
+	at java.base/java.util.Optional.ifPresent(Optional.java:176)
+	at org.junit.jupiter.engine.descriptor.TestFactoryTestDescriptor.lambda$invokeTestMethod$1(TestFactoryTestDescriptor.java:106)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestFactoryTestDescriptor.invokeTestMethod(TestFactoryTestDescriptor.java:93)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:135)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:135)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:32)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:51)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:229)
+	at org.junit.platform.launcher.core.DefaultLauncher.lambda$execute$6(DefaultLauncher.java:197)
+	at org.junit.platform.launcher.core.DefaultLauncher.withInterceptedStreams(DefaultLauncher.java:211)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:191)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:128)
+	at org.junit.platform.console.tasks.ConsoleTestExecutor.executeTests(ConsoleTestExecutor.java:66)
+	at org.junit.platform.console.tasks.ConsoleTestExecutor.lambda$execute$0(ConsoleTestExecutor.java:58)
+	at org.junit.platform.console.tasks.CustomContextClassLoaderExecutor.invoke(CustomContextClassLoaderExecutor.java:33)
+	at org.junit.platform.console.tasks.ConsoleTestExecutor.execute(ConsoleTestExecutor.java:58)
+	at org.junit.platform.console.ConsoleLauncher.executeTests(ConsoleLauncher.java:106)
+	at org.junit.platform.console.ConsoleLauncher.execute(ConsoleLauncher.java:90)
+	at org.junit.platform.console.ConsoleLauncher.execute(ConsoleLauncher.java:49)
+	at org.junit.platform.console.ConsoleLauncher.main(ConsoleLauncher.java:41)
+]]></failure>
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.csc.sics.mg.autotests.SicsDataComparisonTest]/[test-factory:dynamicTestCollection()]/[dynamic-test:#2]
+display-name: CompareACLedgerDetail
+]]></system-out>
+</testcase>
+<testcase name="CompareACLedgerBalance" classname="com.csc.sics.mg.autotests.SicsDataComparisonTest" time="826.15">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.csc.sics.mg.autotests.SicsDataComparisonTest]/[test-factory:dynamicTestCollection()]/[dynamic-test:#3]
+display-name: CompareACLedgerBalance
+]]></system-out>
+</testcase>
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]
+display-name: JUnit Jupiter
+]]></system-out>
+</testsuite>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project name="Download and install SICS Runtime" basedir="." default="download.and.install.sics">
+
+	<description>
+		Build the ${ant.project.name} project, execute JUnit tests and generate reports.
+	</description>
+
+	<property name="sics.product.type" value="pc" />
+	<property name="build.server.base.url" value="http://cscsvrosl024v.no.emea.csc.com:8080/Sics4Builder" />
+	<property name="workspace.dir" value="${basedir}/../.." />
+	<property name="sics.runtime.download.dir" value="${workspace.dir}/runtime.download" />
+	<property name="sics.runtime.install.dir" value="${workspace.dir}/runtime.install" />
+
+	<tstamp>
+		<format property="TODAY" pattern="yyyy-MM-dd HH:mm:ss" />
+		<format property="DATE" pattern="yyyyMMdd" />
+	</tstamp>
+
+	<echo>
+	    Application   : ${ant.project.name}
+	    Build File    : ${ant.file} 
+	    Run Date      : ${TODAY}
+	    Run by        : ${user.name}
+	    Workspace Dir : ${workspace.dir}
+	    Base Dir      : ${basedir}
+	    Java Home     : ${java.home}
+  	</echo>
+
+	<target name="init">
+		<mkdir dir="${sics.runtime.download.dir}" />
+		<mkdir dir="${sics.runtime.install.dir}" />
+	</target>
+	
+	<target name="download.and.install.sics" unless="${skip.scheduler.install}" depends="init">
+		<install.sics.runtime product="${sics.product.type}" />
+	</target>
+
+	<macrodef name="install.sics.runtime">
+		<attribute name="product" />
+		<sequential>
+			<!-- Ask the build server for the file name of the last runtime -->
+			<get dest="${java.io.tmpdir}/runtimeName.txt" src="${build.server.base.url}/runtimeLister?onlyLatest=true&amp;product=@{product}&amp;system=sysadmin" />
+			<!-- Load the file name in a property -->
+			<loadfile property="runtimeFileName_pc" srcfile="${java.io.tmpdir}/runtimeName.txt" />
+			<!-- Delete older runtimes, but keep the current runtime, to avoid downloading it again -->
+			<delete failonerror="false">
+				<fileset dir="${sics.runtime.download.dir}">
+					<include name="*"/>
+	    			<exclude name="${runtimeFileName_pc}"/>
+				</fileset>
+			</delete>
+			<!-- Get the runtime -->
+			<get.runtime.and.unzip runtimeFilename="${runtimeFileName_pc}" targetDownloadFolder="${sics.runtime.download.dir}" targetInstallFolder="${sics.runtime.install.dir}" />
+			
+		</sequential>
+	</macrodef>
+
+	<macrodef name="get.runtime.and.unzip">
+		<attribute name="runtimeFilename" />
+		<attribute name="targetDownloadFolder" />
+		<attribute name="targetInstallFolder" />
+		<sequential>
+			<!-- Get the last runtime via FTP -->
+			<echo message="Getting file @{runtimeFilename} with FTP" />
+			<ftp password="runtime" server="cscsvrosl024v.no.emea.csc.com" userid="runtime" action="get" verbose="true" passive="true" preservelastmodified="true" binary="true" newer="true">
+				<fileset dir="@{targetDownloadFolder}" includes="*@{runtimeFilename}" />
+			</ftp>
+			<!-- unzip the new runtime -->
+			<echo message="unzipping @{runtimeFilename} to @{targetInstallFolder}" />
+			<delete dir="@{targetInstallFolder}" />
+			<mkdir dir="@{targetInstallFolder}" />
+			<unzip dest="@{targetInstallFolder}">
+				<fileset dir="@{targetDownloadFolder}" includes="@{runtimeFilename}" />
+			</unzip>
+			<!-- change the log settings for logging to the correct log file -->
+			<!--
+			<echo file="@{targetFolder}/conf/log4j.properties" append="true">
+					log4j.appender.maintenance=org.apache.log4j.FileAppender
+					log4j.appender.maintenance.File=../${test.database.upgrade.log.dest}
+					log4j.appender.maintenance.layout=org.apache.log4j.EnhancedPatternLayout
+					log4j.appender.maintenance.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss}{GMT+0} %-5p - %m %n
+					log4j.logger.Maintenance=INFO, maintenance
+				</echo>
+			-->
+		</sequential>
+	</macrodef>
+
+</project>

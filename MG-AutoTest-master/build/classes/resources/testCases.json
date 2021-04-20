@@ -1,0 +1,59 @@
+{
+     "Accounting":[
+     {
+     "name":"CompareACWorksheet",
+            "ignoreColumns":[
+               "OBJECT_ID",
+               "STATUS_TIMESTAMP",
+               "FK_STATUS_BY",
+               "BOOKING_DATE",
+               "REGIST_TIMESTAMP",
+               "CLOSED_TIMESTAMP",
+               "LAST_UPDATE_DT",
+               "FK_ACCT_ORDER",
+               "FK_REGISTERED_BY",
+               "FK_LAST_UPD_BY",
+               "IDENTIFIER",
+               "FK_CLOSED_BY"
+         ],
+           "query":"select wrk.*,act.order_id from AC_worksheet wrk JOIN  ACCOUNTING_ORDER act ON wrk.fk_acct_order= act.object_id order by wrk.identifier,act.order_id "
+     },
+     {
+     "name":"CompareACLedgerDetail",
+            "ignoreColumns":[
+            	"IS_LIQUID",
+               "OBJECT_ID",
+               "AC_START_DATE",
+               "AC_END_DATE",
+               "FK_SOC",
+               "FK_INS_PER",
+               "FK_ACCT_CLASS",
+               "FK_WORKSHEET",
+               "FK_BALANCE",
+               "FK_AMENDMENT",
+               "FK_ENTRY_CODE",
+               "DTL_PLT_AMT"
+           ],
+            "query":"select ac.identifier, ao.order_id, ald.* from  ACCOUNTING_ORDER ao JOIN AC_WORKSHEET ac ON ao.OBJECT_ID=ac.FK_ACCT_ORDER JOIN AC_LEDGER_BALANCE alb on alb.fk_worksheet=ac.OBJECT_ID  JOIN AC_LEDGER_DETAIL ald on alb.object_id=ald.fk_balance JOIN BUSINESS b on b.object_id=alb.fk_business order by b.identifier,ao.order_id,ac.identifier,ald.dtl_amt,ald.FUNC_AMT2,ald.EXCH_AMT"
+     },
+     
+     {
+     "name":"CompareACLedgerBalance",
+            "ignoreColumns":[
+              "OBJECT_ID",
+              "DUE_DATE",
+              "DATE_OF_BOOKING",
+              "FK_WORKSHEET",
+              "DOB_TIME_STRING",
+              "DUE_TIME_STRING",
+              "FRK_AC_REF_PERIOD",
+              "ACC_DOC_RECVD_DATE"
+         ],
+            "query":"select al.* from AC_LEDGER_BALANCE al JOIN AC_ledger_detail ad on al.object_id=ad.fk_balance JOIN AC_worksheet wrk ON ad.fk_worksheet=wrk.OBJECT_ID JOIN ACCOUNTING_ORDER act ON wrk.fk_acct_order= act.object_id order by al.identifier"
+     }
+     ]
+     
+      
+ 	}
+
+

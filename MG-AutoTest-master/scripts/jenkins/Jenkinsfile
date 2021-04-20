@@ -1,0 +1,285 @@
+#!/usr/bin/env groovy
+
+def emailRecipients = "lkrog@dxc.com; mjohannesse3@dxc.com; hsverdru@dxc.com; athoma22@dxc.com; dpasunuri@dxc.com";
+
+def sicsImage
+
+pipeline {
+
+	// Declarative pipeline syntax
+	agent any
+	
+	options { 
+		// To preserve disk space, we only keep the 10 last builds, and the 10 last build artifacts.
+		buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10')) 
+		timeout(time: 90, unit: 'MINUTES') 
+	}
+	
+	parameters {
+  		booleanParam(name: 'do_install_sics', defaultValue: true, description: 'Install SICS (download latest runtime from FTP)')
+  		booleanParam(name: 'do_export_db_schema', defaultValue: true, description: 'Export db schema')
+  		booleanParam(name: 'do_removing_user_MULTI_GAAP_TARGET2', defaultValue: true, description: 'removing user MULTI_GAAP_TARGET2')
+  		booleanParam(name: 'do_import_db_schema1', defaultValue: true, description: 'Import db schema')
+  		booleanParam(name: 'do_alter_user_MULTI_GAAP_TARGET2', defaultValue: true, description: 'removing user MULTI_GAAP_TARGET2')
+  		booleanParam(name: 'do_run_sics', defaultValue: true, description: 'Run SICS (execute batch job "MTK_LOADER" in SICS SysAdmin Utility)')
+  		booleanParam(name: 'do_verification', defaultValue: true, description: 'Verifying source and target data by call ant build file')
+  		booleanParam(name: 'do_send_email_notification_on_failure', defaultValue: true, description: 'Send email notification on failure.')
+  	}
+  	
+  	environment {
+	  VERSION = '500' // used for naming output artifacts
+	}
+	
+	stages {
+		stage('Checkout scm') {
+			steps {
+	    		checkout scm
+			}
+		}
+		
+		stage('Install SICS') {
+			when {
+				beforeAgent true
+				expression { params.do_install_sics == true }
+			}
+			agent {
+		        docker {
+		        	image 'sics-server-test'
+		        	args '-v ${WORKSPACE}:${WORKSPACE} -w ${WORKSPACE}'
+		        	reuseNode true
+		        }
+		    }
+			steps {
+			    script {
+					dir("scripts/ant") {
+						sh "ant -f build_install_sics.xml download.and.install.sics"
+					}
+				}
+			}
+		}
+	
+		stage('Export db schema') {
+			when {
+				beforeAgent true
+				expression { params.do_export_db_schema == true }
+			}
+		    agent {
+				dockerfile {
+					filename 'scripts/docker/oracle/database/11g/xe/Dockerfile'
+					args '-v $WORKSPACE/oracle_backupfolder:/var/oracle_backupfolder'
+					reuseNode false
+				}
+			}
+			steps {
+				echo 'Exporting database schema...'
+				sh '''
+					export ORACLE_HOME=/u01/app/oracle/product/11.2.0/xe
+	                export PATH=$ORACLE_HOME/bin:$PATH
+	                export ORACLE_SID=XE
+					echo "ORACLE_HOME: $ORACLE_HOME"
+					cat /u01/app/oracle/product/11.2.0/xe/network/admin/tnsnames.ora
+					expdp DBAEXP/DBAEXP@CSCDBSOSL003V.WORLD DIRECTORY=DATA_PUMP_DIR dumpfile=EXP_MG_AUTO_SOURCE_CLOSE_WS.dmp logfile=EXP_MG_AUTO_SOURCE_CLOSE_WS.log schemas=MG_AUTO_SOURCE reuse_dumpfiles=YES 
+				'''
+			}
+		}
+	
+		stage('Remove user MULTI_GAAP_TARGET2') {
+			when {
+			 	beforeAgent true
+				expression { params.do_removing_user_MULTI_GAAP_TARGET2 == true }
+			}
+			
+			agent {
+				dockerfile {
+					filename 'scripts/docker/oracle/database/11g/xe/Dockerfile'
+					args '-v $WORKSPACE/oracle_backupfolder:/var/oracle_backupfolder'
+					reuseNode false
+				}
+			}
+		    steps {
+				echo 'Removing user MULTI_GAAP_TARGET2'
+				sh '''
+					export ORACLE_HOME=/u01/app/oracle/product/11.2.0/xe
+	                		export PATH=$ORACLE_HOME/bin:$PATH
+	              		        export ORACLE_SID=XE 
+					echo "ORACLE_HOME: $ORACLE_HOME"
+					cat /u01/app/oracle/product/11.2.0/xe/network/admin/tnsnames.ora
+					sqlplus /nolog << EOF
+					CONNECT admuser/traktor1@CSCDBSOSL003V.WORLD
+					drop user MULTI_GAAP_TARGET2 cascade;
+					EXIT;
+					EOF      
+			    '''
+			}
+		}
+		
+		stage('Import db schema1') {
+			when {
+				beforeAgent true
+				expression { params.do_import_db_schema1 == true }
+			}
+		    agent {
+				dockerfile {
+					filename 'scripts/docker/oracle/database/11g/xe/Dockerfile'
+					args '-v $WORKSPACE/oracle_backupfolder:/var/oracle_backupfolder'
+					reuseNode false
+				}
+			}
+			steps {
+				echo 'Importing database schema...'
+				sh '''
+					export ORACLE_HOME=/u01/app/oracle/product/11.2.0/xe
+	                export PATH=$ORACLE_HOME/bin:$PATH
+	                export ORACLE_SID=XE
+					echo "ORACLE_HOME: $ORACLE_HOME"
+					cat /u01/app/oracle/product/11.2.0/xe/network/admin/tnsnames.ora
+					impdp DBAEXP/DBAEXP@CSCDBSOSL003V.WORLD REMAP_SCHEMA=MG_AUTO_SOURCE:MULTI_GAAP_TARGET2 dumpfile=EXP_MG_AUTO_SOURCE_CLOSE_WS.dmp logfile=import_multi_gaap_target2.log schemas=MG_AUTO_SOURCE table_exists_action=REPLACE data_options=SKIP_CONSTRAINT_ERRORS exclude=STATISTICS
+				'''
+			}
+		}
+		
+		stage('Alter user MULTI_GAAP_TARGET2') {
+			when {
+			 	beforeAgent true
+				expression { params.do_alter_user_MULTI_GAAP_TARGET2 == true }
+			}
+			
+			agent {
+				dockerfile {
+					filename 'scripts/docker/oracle/database/11g/xe/Dockerfile'
+					args '-v $WORKSPACE/oracle_backupfolder:/var/oracle_backupfolder'
+					reuseNode false
+				}
+			}
+		    steps {
+				echo 'alter user MULTI_GAAP_TARGET2'
+				sh '''
+					export ORACLE_HOME=/u01/app/oracle/product/11.2.0/xe
+	                		export PATH=$ORACLE_HOME/bin:$PATH
+	              		        export ORACLE_SID=XE 
+					echo "ORACLE_HOME: $ORACLE_HOME"
+					cat /u01/app/oracle/product/11.2.0/xe/network/admin/tnsnames.ora
+					sqlplus /nolog << EOF
+					CONNECT admuser/traktor1@CSCDBSOSL003V.WORLD
+					alter user MULTI_GAAP_TARGET2 IDENTIFIED BY MULTI_GAAP_TARGET2;
+					EXIT;
+	 				EOF 
+				'''
+			}
+		}
+	
+		stage('Run SICS') {
+			when {
+				beforeAgent true
+				expression { params.do_run_sics == true }
+			}
+			agent {
+		        docker {
+		        	image 'sics-server-test'
+		        	args '-v ${WORKSPACE}:${WORKSPACE} -w ${WORKSPACE}'
+		        	reuseNode true
+		        }
+		    }
+			steps {
+			    script {
+					dir("scripts/ant") {
+						sh "ant -f build_run_sics.xml -Ddb.userid=MULTI_GAAP_TARGET2 -Ddb.pass=MULTI_GAAP_TARGET2 -Ddb.schema=MULTI_GAAP_TARGET2 -Dschedular=MG_Retrocession_Order_1_:_Check_Accounting_Classification_split run.sics"
+						sh "ant -f build_run_sics.xml -Ddb.userid=MULTI_GAAP_TARGET2 -Ddb.pass=MULTI_GAAP_TARGET2 -Ddb.schema=MULTI_GAAP_TARGET2 -Dschedular=MG_Accounting_Order_1_:_Checking_Occurrence_Year_Re_Allocation_of_Acctuals run.sics"
+						sh "ant -f build_run_sics.xml -Ddb.userid=MULTI_GAAP_TARGET2 -Ddb.pass=MULTI_GAAP_TARGET2 -Ddb.schema=MULTI_GAAP_TARGET2 -Dschedular=MG_Accounting_Order_2_:_Checking_Accounting_Classificaiton_split run.sics"
+						sh "ant -f build_run_sics.xml -Ddb.userid=MULTI_GAAP_TARGET2 -Ddb.pass=MULTI_GAAP_TARGET2 -Ddb.schema=MULTI_GAAP_TARGET2 -Dschedular=Accrual_on_Inward_Order run.sics"
+					}
+				}
+			}
+		}
+	
+		stage('Verfication') {
+			when {
+				beforeAgent true
+				expression { params.do_verification == true }
+			}
+			agent {
+		        docker {
+		        	image 'sics-server-test'
+		        	args '-v ${WORKSPACE}:${WORKSPACE} -w ${WORKSPACE}'
+		        	reuseNode true
+		        }
+		    }
+			steps {
+			    script {
+					sh "ant -f build.xml  test"
+				}
+			}
+		}
+		
+		stage('Commit Junit reports') {
+			when {
+				beforeAgent true
+				expression { params.do_verification == true }
+			}
+			steps {
+			    script {
+					// Using GitHub app credentials
+					withCredentials ([usernamePassword(credentialsId: 'githubapp-sics', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_PASSWORD')]) {
+						sh '''
+							rm -rf ./docgen-test/
+							git clone https://${GIT_USER}:${GIT_PASSWORD}@github.dxc.com/sics/docgen-test
+							mkdir -p docgen-test/staging-area/mg-autotest/aggregated-junit-reports
+							cp build/test-report/TESTS-TestSuites.xml docgen-test/staging-area/mg-autotest/aggregated-junit-reports
+			        		cd docgen-test
+			        		git remote set-url origin https://${GIT_USER}:${GIT_PASSWORD}@github.dxc.com/sics/docgen-test
+			                git config user.email "${GIT_USER}@dxc.com"
+			                git config user.name "${GIT_USER}"		        
+			                git add staging-area/mg-autotest
+			                git commit -m "Generated from project mg-autotest" || exit 0
+			                git push https://${GIT_USER}:${GIT_PASSWORD}@github.dxc.com/sics/docgen-test HEAD:${GIT_BRANCH}
+						'''
+					}
+				}	
+			}
+		} 		 		
+	}
+	
+	post {	
+		always {
+			script {
+				if (fileExists(file: 'build/test-report/TEST-junit-vintage.xml')) {
+					sh 'rm -f build/test-report/TEST-junit-vintage.xml'
+				}
+			}
+			junit 'build/test-report/TEST-junit-jupiter.xml'
+			dir ('build/test-report') {
+				archiveArtifacts artifacts: 'TESTS-TestSuites.xml', fingerprint: true 
+			}
+		}
+		
+		success {
+			script {
+				dir('build') {
+					if (fileExists(file: 'mg_test_report.zip')) {
+						sh 'rm -f mg_test_report.zip'
+					}
+					zip zipFile: 'mg_test_report.zip', archive: false, dir: 'test-report', glob: '**/*.*'
+					archiveArtifacts artifacts: 'mg_test_report.zip', fingerprint: true  
+				}
+			}
+		}
+		
+		failure {
+			script {
+				if(params.do_send_email_notification_on_failure == true) {
+					echo 'Sending email notifications (FAILURE) to $DEFAULT_RECIPIENTS' 
+					emailext subject: '$DEFAULT_SUBJECT',
+					body: '$DEFAULT_CONTENT',
+					//attachmentsPattern: 'SicsBatchJobTest/logs/errors.log',
+					recipientProviders: [
+						[$class: 'CulpritsRecipientProvider'],
+						[$class: 'DevelopersRecipientProvider'],
+						[$class: 'RequesterRecipientProvider']
+					], 
+					replyTo: '$DEFAULT_REPLYTO',
+					to: emailRecipients
+				}
+	        }
+		}
+	}
+}

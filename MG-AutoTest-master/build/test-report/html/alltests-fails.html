@@ -1,0 +1,186 @@
+<html xmlns:string="xalan://java.lang.String" xmlns:lxslt="http://xml.apache.org/xslt">
+    <head>
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Unit Test Results: All Failures</title>
+        <link rel="stylesheet" type="text/css" title="Style" href="stylesheet.css">
+    </head>
+    <body onload="open('allclasses-frame.html','classListFrame')">
+        <h1>Unit Test Results.</h1>
+        <table width="100%">
+            <tr>
+                <td align="left"></td><td align="right">Designed for use with <a href="https://www.junit.org/">JUnit</a> and <a href="https://ant.apache.org/">Ant</a>.</td>
+            </tr>
+        </table>
+        <hr size="1">
+        <h2>All Failures</h2>
+        <table class="details" border="0" cellpadding="5" cellspacing="2" width="95%">
+            <tr valign="top">
+                <th>Class</th><th>Name</th><th>Status</th><th width="80%">Type</th><th nowrap>Time(s)</th>
+            </tr>
+            <tr valign="top" class="Failure">
+                <td><a href="/0_JUnit Jupiter.html">JUnit Jupiter</a></td><td><a name="CompareACLedgerDetail"></a><a href="/0_JUnit Jupiter.html#CompareACLedgerDetail">CompareACLedgerDetail</a></td><td>Failure</td><td>Unequal Column Values in [Row 6,395: OCC_YR] Expected 2010 but got 2012 Unequal Column Values in [Row 6,395: ORIG_UW_YEAR] Expected 2010 but got 2012 Unequal Column Values in [Row 6,395: UW_YEAR] Expected 2010 but got 2012
+                    <br>
+                    <br>
+                    <code>junit.framework.AssertionFailedError: Unequal Column Values in [Row 6,395: OCC_YR] Expected 2010 but got 2012
+                        <br>
+                        Unequal Column Values in [Row 6,395: ORIG_UW_YEAR] Expected 2010 but got 2012
+                        <br>
+                        Unequal Column Values in [Row 6,395: UW_YEAR] Expected 2010 but got 2012
+                        <br>
+                        	at com.csc.sics.mg.sqlunit.AssertSql.fail(Unknown Source)
+                        <br>
+                        	at com.csc.sics.mg.sqlunit.AssertSql.fail(Unknown Source)
+                        <br>
+                        	at com.csc.sics.mg.sqlunit.AssertSql.equals(Unknown Source)
+                        <br>
+                        	at com.csc.sics.mg.sqlunit.AssertSql.equalsByColumnName(Unknown Source)
+                        <br>
+                        	at com.csc.sics.mg.autotests.SicsDataComparisonTest.lambda$dynamicTestCollection$0(Unknown Source)
+                        <br>
+                        	at org.junit.jupiter.engine.descriptor.DynamicTestTestDescriptor.lambda$execute$0(DynamicTestTestDescriptor.java:52)
+                        <br>
+                        	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:125)
+                        <br>
+                        	at org.junit.jupiter.api.extension.InvocationInterceptor.interceptDynamicTest(InvocationInterceptor.java:158)
+                        <br>
+                        	at org.junit.jupiter.engine.descriptor.DynamicTestTestDescriptor.lambda$execute$1(DynamicTestTestDescriptor.java:58)
+                        <br>
+                        	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptorCall.lambda$ofVoid$0(InvocationInterceptorChain.java:76)
+                        <br>
+                        	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:104)
+                        <br>
+                        	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:62)
+                        <br>
+                        	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:43)
+                        <br>
+                        	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:35)
+                        <br>
+                        	at org.junit.jupiter.engine.descriptor.DynamicTestTestDescriptor.execute(DynamicTestTestDescriptor.java:57)
+                        <br>
+                        	at org.junit.jupiter.engine.descriptor.DynamicTestTestDescriptor.execute(DynamicTestTestDescriptor.java:31)
+                        <br>
+                        	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:135)
+                        <br>
+                        	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+                        <br>
+                        	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125)
+                        <br>
+                        	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135)
+                        <br>
+                        	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123)
+                        <br>
+                        	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+                        <br>
+                        	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122)
+                        <br>
+                        	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80)
+                        <br>
+                        	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:32)
+                        <br>
+                        	at org.junit.platform.engine.support.hierarchical.NodeTestTask$DefaultDynamicTestExecutor.execute(NodeTestTask.java:198)
+                        <br>
+                        	at java.base/java.util.Optional.ifPresent(Optional.java:176)
+                        <br>
+                        	at org.junit.jupiter.engine.descriptor.TestFactoryTestDescriptor.lambda$invokeTestMethod$1(TestFactoryTestDescriptor.java:106)
+                        <br>
+                        	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+                        <br>
+                        	at org.junit.jupiter.engine.descriptor.TestFactoryTestDescriptor.invokeTestMethod(TestFactoryTestDescriptor.java:93)
+                        <br>
+                        	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:135)
+                        <br>
+                        	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69)
+                        <br>
+                        	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:135)
+                        <br>
+                        	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+                        <br>
+                        	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125)
+                        <br>
+                        	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135)
+                        <br>
+                        	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123)
+                        <br>
+                        	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+                        <br>
+                        	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122)
+                        <br>
+                        	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80)
+                        <br>
+                        	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+                        <br>
+                        	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
+                        <br>
+                        	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:139)
+                        <br>
+                        	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+                        <br>
+                        	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125)
+                        <br>
+                        	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135)
+                        <br>
+                        	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123)
+                        <br>
+                        	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+                        <br>
+                        	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122)
+                        <br>
+                        	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80)
+                        <br>
+                        	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+                        <br>
+                        	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
+                        <br>
+                        	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:139)
+                        <br>
+                        	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+                        <br>
+                        	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125)
+                        <br>
+                        	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135)
+                        <br>
+                        	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123)
+                        <br>
+                        	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+                        <br>
+                        	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122)
+                        <br>
+                        	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80)
+                        <br>
+                        	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:32)
+                        <br>
+                        	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+                        <br>
+                        	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:51)
+                        <br>
+                        	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:229)
+                        <br>
+                        	at org.junit.platform.launcher.core.DefaultLauncher.lambda$execute$6(DefaultLauncher.java:197)
+                        <br>
+                        	at org.junit.platform.launcher.core.DefaultLauncher.withInterceptedStreams(DefaultLauncher.java:211)
+                        <br>
+                        	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:191)
+                        <br>
+                        	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:128)
+                        <br>
+                        	at org.junit.platform.console.tasks.ConsoleTestExecutor.executeTests(ConsoleTestExecutor.java:66)
+                        <br>
+                        	at org.junit.platform.console.tasks.ConsoleTestExecutor.lambda$execute$0(ConsoleTestExecutor.java:58)
+                        <br>
+                        	at org.junit.platform.console.tasks.CustomContextClassLoaderExecutor.invoke(CustomContextClassLoaderExecutor.java:33)
+                        <br>
+                        	at org.junit.platform.console.tasks.ConsoleTestExecutor.execute(ConsoleTestExecutor.java:58)
+                        <br>
+                        	at org.junit.platform.console.ConsoleLauncher.executeTests(ConsoleLauncher.java:106)
+                        <br>
+                        	at org.junit.platform.console.ConsoleLauncher.execute(ConsoleLauncher.java:90)
+                        <br>
+                        	at org.junit.platform.console.ConsoleLauncher.execute(ConsoleLauncher.java:49)
+                        <br>
+                        	at org.junit.platform.console.ConsoleLauncher.main(ConsoleLauncher.java:41)
+                        <br>
+                    </code></td><td>483.092</td>
+            </tr>
+        </table>
+    </body>
+</html>

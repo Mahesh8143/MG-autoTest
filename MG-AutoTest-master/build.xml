@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project basedir="." default="test" name="mg-autotest" xmlns:jacoco="antlib:org.jacoco.ant">
+
+
+
+	<description>
+            Build the ${ant.project.name} project, execute JUnit tests
+    </description>
+
+
+
+	<property name="source.dir" value="src" />
+	<property name="resources.dir" value="resources" />
+	<property name="build.dir" value="build" />
+	<property name="build.reports" value="${build.dir}/test-report" />
+	<property name="build.classes.dir" value="${build.dir}/classes" />
+	<tstamp>
+		<format property="TODAY" pattern="yyyy-MM-dd HH:mm:ss" />
+		<format property="DATE" pattern="yyyyMMdd" />
+	</tstamp>
+
+	<path id="testExecutionPath">
+		<fileset dir="lib" includes="*.jar" />
+		<pathelement path="${build.classes.dir}" />
+		<pathelement path="${build.dir}/test-classes" />
+	</path>
+
+
+
+	<path id="compile.classpath">
+		<pathelement location="${build.classes.dir}" />
+		<pathelement location="lib/apiguardian-api-1.1.0.jar" />
+		<pathelement location="lib/hamcrest-core-1.3.jar" />
+		<pathelement location="lib/junit-4.12.jar" />
+		<!--<pathelement location="lib/org.jacoco.ant-0.8.6.jar" /> -->
+		<pathelement location="lib/junit-jupiter-api-5.5.2.jar" />
+		<pathelement location="lib/junit-jupiter-engine-5.5.2.jar" />
+		<pathelement location="lib/junit-jupiter-migration-support-5.0.0-M3.jar" />
+		<pathelement location="lib/junit-platform-commons-1.5.2.jar" />
+		<pathelement location="lib/junit-platform-engine-1.5.2.jar" />
+		<pathelement location="lib/junit-platform-launcher-1.5.2.jar" />
+		<pathelement location="lib/junit-vintage-engine-5.5.2.jar" />
+		<pathelement location="lib/opentest4j-1.1.1.jar" />
+		<pathelement location="lib/jackson-annotations-2.10.2.jar" />
+		<pathelement location="lib/jackson-core-2.10.2.jar" />
+		<pathelement location="lib/jackson-databind-2.10.2.jar" />
+		<pathelement location="lib/log4j-1.2.16.jar" />
+		<pathelement location="lib/junit-platform-console-standalone-1.5.2.jar" />
+		<pathelement location="lib/codemodel-2.2-javadoc.jar" />
+		<pathelement location="lib/codemodel-2.2-sources.jar" />
+		<pathelement location="lib/codemodel-2.2.jar" />
+		<pathelement location="lib/csvjdbc.jar" />
+		<pathelement location="lib/db2jcc_license_cu.jar" />
+		<pathelement location="lib/db2jcc4.jar" />
+		<pathelement location="lib/jtds-1.2.8.jar" />
+		<pathelement location="lib/junit-4.8.2.jar" />
+		<pathelement location="lib/JUnitParams-0.3.6.jar" />
+		<pathelement location="lib/mssql-jdbc-7.0.0.jre8.jar" />
+		<pathelement location="lib/ojdbc6-11.1.0.jar" />
+		<pathelement location="lib/ojdbc8-12.2.0.1.0.jar" />
+		<pathelement location="lib/poi-3.10-FINAL-20140208.jar" />
+		<pathelement location="lib/poi-excelant-3.10-FINAL-20140208.jar" />
+		<pathelement location="lib/poi-ooxml-3.10-FINAL-20140208.jar" />
+		<pathelement location="lib/poi-ooxml-schemas-3.10-FINAL-20140208.jar" />
+		<pathelement location="lib/poi-scratchpad-3.10-FINAL-20140208.jar" />
+		<pathelement location="lib/poi-src-3.10-FINAL-20140208.zip" />
+		<pathelement location="lib/sqljdbc4.jar" />
+		<pathelement location="lib/slf4j-api-1.6.6.jar" />
+		<pathelement location="lib/commons-dbutils-1.7.jar" />
+		<pathelement location="lib/poi-ooxml-schemas-3.10-FINAL-20140208.jar" />
+		<pathelement location="lib/HikariCP-3.2.0.jar" />
+		<pathelement location="lib/slf4j-log4j12-1.6.6.jar" />
+		<pathelement location="lib/yank-3.3.3.jar" />
+		<pathelement location="lib/org.jacoco.ant-0.8.6.jar" />
+	</path>
+	<echo>
+            Application: ${ant.project.name}
+            Build File : ${ant.file} 
+            Run Date   : ${TODAY}
+            Run by     : ${user.name}
+            Build Dir  : ${build.dir}
+            Base Dir   : ${basedir}
+            Java Home  : ${java.home}
+          </echo>
+
+
+
+	<taskdef uri="antlib:org.jacoco.ant" resource="org/jacoco/ant/antlib.xml">
+		<classpath refid="testExecutionPath" />
+	</taskdef>
+
+
+	<target name="clean">
+		<delete dir="${build.dir}" />
+	</target>
+	<target name="init" depends="clean">
+		<mkdir dir="${build.dir}" />
+		<mkdir dir="${build.reports}" />
+		<mkdir dir="${build.classes.dir}" />
+		<mkdir dir="${build.classes.dir}/${resources.dir}" />
+		<echo message="created folders" />
+
+
+		<copy includeemptydirs="false" todir="${build.classes.dir}/${resources.dir}">
+			<fileset dir="${basedir}/${resources.dir}">
+				<exclude name="**/*.launch" />
+				<exclude name="**/*.java" />
+			</fileset>
+		</copy>
+	</target>
+	<target name="compile" depends="init">
+		<javac srcdir="${source.dir}" destdir="${build.classes.dir}" classpathref="compile.classpath" includeantruntime="true" />
+		<echo message="compile completed">
+		</echo>
+	</target>
+
+
+	<target name="test" depends="compile">
+		<mkdir dir="${build.reports}/details" />
+		<echo message="jacoco started" />
+		<jacoco:coverage destfile="${build.dir}/jacoco.exec">
+		<java classpathref="compile.classpath" classname="org.junit.platform.console.ConsoleLauncher" fork="true">
+			<arg value="--scan-classpath" />
+
+			<!--<arg value="select-package=com.csc.sics.mtk.sqlunit" />-->
+
+			<arg line="--reports-dir ${build.reports}" />
+		</java>
+		
+		</jacoco:coverage>
+		
+		<junitreport todir="${build.reports}">
+					<fileset dir="${build.reports}">
+						<include name="TEST-junit-jupiter.xml" />
+					</fileset>
+					<report format="frames" todir="${build.reports}/html" />
+				</junitreport>
+
+
+
+		<jacoco:report xmlns:jacoco="antlib:org.jacoco.ant">
+			<executiondata>
+				<file file="${build.dir}/jacoco.exec" />
+			</executiondata>
+			<structure name="Jacoco">
+				<classfiles>
+					<fileset dir="${build.classes.dir}" />
+				</classfiles>
+				<sourcefiles encoding="UTF-8">
+					<fileset dir="${source.dir}" />
+				</sourcefiles>
+			</structure>
+			<html destdir="${build.dir}/report" />
+
+		</jacoco:report>
+
+	</target>
+</project>

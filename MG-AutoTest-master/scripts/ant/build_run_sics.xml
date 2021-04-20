@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project name="Run SICS System Administration Utility" basedir="." default="run.sics">
+
+	<description>
+		Build the ${ant.project.name} project, execute JUnit tests and generate reports.
+	</description>
+
+	<property name="sics.product.type" value="pc" />
+	<property name="workspace.dir" value="${basedir}/../.." />
+	<property name="sics.runtime.install.dir" value="${workspace.dir}/runtime.install" />
+	<property name="db" value="CSCDBSOSL003V" />
+	<property name="db.url" value="jdbc:oracle:thin:@CSCDBSOSL003V.no.emea.csc.com:1521:cscdbsosl003" />
+	<property name="db.userid" value="MULTI_GAAP_TARGET2" />
+	<property name="db.pass" value="MULTI_GAAP_TARGET2" />
+	<property name="db.schema" value="MULTI_GAAP_TARGET2" />
+	
+
+	<tstamp>
+		<format property="TODAY" pattern="yyyy-MM-dd HH:mm:ss" />
+		<format property="DATE" pattern="yyyyMMdd" />
+	</tstamp>
+
+	<echo>
+	    Application   : ${ant.project.name}
+	    Build File    : ${ant.file} 
+	    Run Date      : ${TODAY}
+	    Run by        : ${user.name}
+	    Workspace Dir : ${workspace.dir}
+	    Base Dir      : ${basedir}
+	    Java Home     : ${java.home}
+	    db.userid     : ${db.userid}
+		schedular	  : ${schedular}
+
+		
+  	</echo>
+  	
+  	<path id="sics.launch.classpath">
+		<!-- SICS launch dependencies (The SICSClassLoader is setting up the rest of the dependencies for SICS at runtime) -->
+		<pathelement location="${sics.runtime.install.dir}/conf" />
+		<pathelement location="${sics.runtime.install.dir}/lib/sics.launcher.jar" />
+		<pathelement location="${sics.runtime.install.dir}/lib/sics.dev.launcher.jar" />
+		<pathelement location="${sics.runtime.install.dir}/lib/sics.classloader.jar" />
+		<!-- Database drivers -->
+		<pathelement location="${sics.runtime.install.dir}/3plib/ojdbc8-12.2.0.1.0.jar" />
+	</path>
+	<target name="run.sics">
+			<echo message="Launching SICS Sys Admin Utility in batch mode..."/>
+			<!-- Configure to use GTK64 instead in Win64 -->
+			<!-- 
+			<replace file="${sics.runtime.install.dir}/conf/sics.classpath.xml" token="&lt;javalibrarypathentry type=&quot;folder&quot; path=&quot;3plib/win64&quot; os.arch=&quot;amd64&quot; os.name=&quot;Windows.*&quot;/&gt;" value="&lt;javalibrarypathentry type=&quot;folder&quot; path=&quot;3plib/gtk64&quot; os.arch=&quot;amd64&quot; os.name=&quot;Linux.*&quot;/&gt;"/>
+			-->
+			<java dir="${sics.runtime.install.dir}" classpathref="sics.launch.classpath" classname="com.csc.sics.launcher.SchedulerLauncherMain" fork="true">
+				<arg value="sysadmin" />
+				<arg value="pc" />
+				<arg value="-du${db.userid}"/>
+				<arg value="-dp${db.pass}"/>
+				<arg value="-de${db.schema}"/>
+				<arg value="-dnSOURCE_003V"/>
+				<arg value="-b${schedular}"/>
+			</java> 
+		</target>
+</project>
